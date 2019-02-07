@@ -1,0 +1,62 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "mrs",
+        "first": "marciele",
+        "last": "rodrigues"
+      },
+      "location": {
+        "street": "6375 rua são paulo ",
+        "city": "timon",
+        "state": "sergipe",
+        "postcode": 15223,
+        "coordinates": {
+          "latitude": "-73.6279",
+          "longitude": "83.4998"
+        },
+        "timezone": {
+          "offset": "-3:30",
+          "description": "Newfoundland"
+        }
+      },
+      "email": "marciele.rodrigues@example.com",
+      "login": {
+        "uuid": "ad55acee-0540-440c-8a80-58f26fc5ddd2",
+        "username": "beautifulfrog574",
+        "password": "justme",
+        "salt": "ttbsaXGN",
+        "md5": "2b679160359f61393c1b35aa3c0c4474",
+        "sha1": "23d8d50d402b4faa38921dfa1dbea52589bf5589",
+        "sha256": "576c1721d9acab6bb5406e5f95b29432c91db9b9f77188e567c244c069e2344e"
+      },
+      "dob": {
+        "date": "1995-06-20T02:43:21Z",
+        "age": 23
+      },
+      "registered": {
+        "date": "2004-04-25T17:10:26Z",
+        "age": 14
+      },
+      "phone": "(98) 3888-1894",
+      "cell": "(05) 8477-3568",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/40.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/40.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/40.jpg"
+      },
+      "nat": "BR"
+    }
+  ],
+  "info": {
+    "seed": "77d6aa965ba8e11f",
+    "results": 1,
+    "page": 1,
+    "version": "1.2"
+  }
+}

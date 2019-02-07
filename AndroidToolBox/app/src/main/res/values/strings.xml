@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">ThomasArtru</string>
+    <string name="valider">Valider</string>
+    <string name="connexion">Connexion</string>
+    <string name="identifiant">Identifiant</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="logo_isen_yncrea">logo isen yncrea</string>
+    <string name="bonjour">Bonjour</string>
+    <string name="cycle_de_vie">Cycle de Vie</string>
+    <string name="sauvegarde">Sauvegarde</string>
+    <string name="permissions">Permissions</string>
+    <string name="webservices">WebServices</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="swap_fragment">Swap Fragment</string>
+    <string name="deconnexion">Deconnexion</string>
+    <string name="pagination">Pagination</string>
+    <string name="acc_s_aux_informations_android">Accès aux informations android</string>
+    <string name="en_attente_de_donn_es_gps">En attente de données GPS</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="saisir_vos_informations">Saisir vos informations</string>
+    <string name="prenom">Prenom</string>
+    <string name="sauvegarder_vos_infos">Sauvegarder vos infos</string>
+    <string name="nom">Nom</string>
+    <string name="afficher_vos_infos">Afficher vos infos</string>
+    <string name="date_de_naissance">Date de naissance</string>
+    <string name="date">Date</string>
+    <string name="textview">TextView</string>
+    <string name="numero">Numero :</string>
+    <string name="nomspace">Nom :</string>
+    <string name="email">email</string>
+    <string name="adresse">adresse</string>
+    <string name="name">name</string>
+</resources>
