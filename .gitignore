@@ -40,3 +40,5 @@ proguard/
 captures/
 
 AndroidToolBox/\.idea/
+
+\.idea/

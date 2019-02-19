@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         imagePermissions.setOnClickListener{
-            startActivity(Intent(this, PermissionActivity::class.java))
+            startActivity(Intent(this, CertificatActivity::class.java))
         }
 
         imageService.setOnClickListener{
