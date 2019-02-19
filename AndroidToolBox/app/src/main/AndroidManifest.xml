@@ -22,8 +22,6 @@
             android:theme="@style/AppTheme">
         <activity android:name=".Pinning2Activity">
         </activity>
-        <activity android:name=".CertificatePinnerActivity">
-        </activity>
         <activity android:name=".TrustManagerActivity">
         </activity>
         <activity android:name=".CaPinningActivity">
