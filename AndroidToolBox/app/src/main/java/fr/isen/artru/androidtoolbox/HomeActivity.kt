@@ -13,7 +13,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         imageCycleDeVie.setOnClickListener{
-            startActivity(Intent(this, CycleDeVieActivity::class.java))
+            startActivity(Intent(this,SharedprefActivity::class.java))
         }
         deconnexion.setOnClickListener{
             val sharedPref = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
