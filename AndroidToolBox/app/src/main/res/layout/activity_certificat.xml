@@ -31,7 +31,7 @@
                     android:background="@android:color/holo_orange_dark"/>
             <Button
                     android:text="pinningTest"
-                    android:layout_width="119dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/pinningTest"
                     app:layout_constraintTop_toBottomOf="@+id/revoked" app:layout_constraintEnd_toEndOf="@+id/revoked"
                     app:layout_constraintStart_toStartOf="@+id/revoked"
@@ -47,7 +47,7 @@
                     android:background="@android:color/holo_orange_dark"/>
             <Button
                     android:text="Sha One"
-                    android:layout_width="116dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/shaOne"
                     app:layout_constraintTop_toBottomOf="@+id/pinningTest" android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@+id/pinningTest"
@@ -71,7 +71,7 @@
                     android:background="@android:color/holo_orange_dark"/>
             <Button
                     android:text="sct"
-                    android:layout_width="117dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/sct"
                     android:background="@android:color/holo_orange_dark"
                     android:layout_marginTop="8dp"
@@ -88,7 +88,7 @@
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
             <Button
                     android:text="revoked"
-                    android:layout_width="120dp"
+                    android:layout_width="0dp"
                     android:layout_height="46dp" android:id="@+id/revoked"
                     app:layout_constraintTop_toBottomOf="@+id/certificate"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
                     android:layout_marginStart="8dp"/>
             <Button
                     android:text="ssl Version"
-                    android:layout_width="112dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/sslVersion"
                     app:layout_constraintTop_toBottomOf="@+id/sct" app:layout_constraintEnd_toEndOf="@+id/sct"
                     app:layout_constraintStart_toStartOf="@+id/sct" android:background="@android:color/holo_orange_dark"
