@@ -80,12 +80,13 @@
             app:layout_constraintTop_toBottomOf="@+id/imagePermissions" app:layout_constraintEnd_toEndOf="@+id/imagePermissions"
             app:layout_constraintStart_toStartOf="@+id/imagePermissions"/>
     <TextView
-            android:text="@string/webservices"
+            android:text="Certificate Pinning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView7"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageService" app:layout_constraintStart_toStartOf="@+id/imageService"
+            app:layout_constraintTop_toBottomOf="@+id/imageService"
+            app:layout_constraintStart_toStartOf="@+id/imageService"
             app:layout_constraintEnd_toEndOf="@+id/imageService"/>
     <Button
             android:text="@string/deconnexion"

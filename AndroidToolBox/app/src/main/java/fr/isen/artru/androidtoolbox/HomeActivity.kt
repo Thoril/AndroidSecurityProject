@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         imageService.setOnClickListener{
-            startActivity(Intent(this,WebServicesActivity::class.java))
+            startActivity(Intent(this,CaPinningActivity::class.java))
         }
 
         imagePagination.setOnClickListener{
