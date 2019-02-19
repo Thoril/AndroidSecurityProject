@@ -1,6 +1,7 @@
 package fr.isen.artru.androidtoolbox
 
 import android.arch.persistence.room.Room
+import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +9,10 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.support.annotation.RequiresApi
 import fr.isen.artru.androidtoolbox.model.database.AppDatabase
+import fr.isen.artru.androidtoolbox.model.database.User
 import kotlinx.android.synthetic.main.activity_sauvegarde.*
 import java.security.KeyStore
-import javax.crypto.Cipher
+import java.util.*
 import javax.crypto.KeyGenerator
 
 
@@ -45,16 +47,17 @@ class SauvegardeActivity : AppCompatActivity() {
         val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "database-name"
-        ).build()
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
 
         insert.setOnClickListener{
-            val cipherEn = Cipher.getInstance("AES/GCM/NoPadding")
-            val cypherWrapper : CipherWrapper = CipherWrapper()
-            val user = User(firstName.text.toString(),lastName.text.toString(), cypherWrapper.encrypt(password.text.toString(),secretKey, true))
-
+            val cypherWrapper = CipherWrapper()
+            val temp = resources.getIdentifier(firstName.text.toString(), lastName.text.toString(), this.packageName)
+            val user = User(firstName.text.toString(), lastName.text.toString(), cypherWrapper.encrypt(password.text.toString(),secretKey, true))
+            db.userDao().insertAll(user)
         }
 
         display.setOnClickListener {
+            startActivity(Intent(this, UserActivity::class.java))
         }
     }
 }

@@ -6,8 +6,10 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity
 data class User(
-    @PrimaryKey var uid: Int,
     @ColumnInfo(name = "first_name") var firstName: String?,
     @ColumnInfo(name = "last_name") var lastName: String?,
     @ColumnInfo(name = "password") var password: String?
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int = 0
+}
