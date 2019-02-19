@@ -46,7 +46,7 @@
                     app:layout_constraintStart_toStartOf="@+id/selfSigned"
                     android:background="@android:color/holo_orange_dark"/>
             <Button
-                    android:text="Sha One"
+                    android:text="SSL Version"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/shaOne"
                     app:layout_constraintTop_toBottomOf="@+id/pinningTest" android:layout_marginTop="8dp"
@@ -96,7 +96,7 @@
                     android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/authSecure"
                     android:layout_marginStart="8dp"/>
             <Button
-                    android:text="ssl Version"
+                    android:text="Cipher "
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/sslVersion"
                     app:layout_constraintTop_toBottomOf="@+id/sct" app:layout_constraintEnd_toEndOf="@+id/sct"
