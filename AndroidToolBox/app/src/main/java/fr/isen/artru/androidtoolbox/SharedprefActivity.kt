@@ -62,8 +62,6 @@ class SharedprefActivity : AppCompatActivity() {
                 val resp: Map<String, Any> = Gson().fromJson(response, object : TypeToken<Map<String, Any>>() {}.type)
                 Log.i(TAG, resp["token"]?.toString())
                 this.store(email, pass)
-                val intent = Intent(this, LoggedActivity::class.java)
-                startActivity(intent)
             },
             Response.ErrorListener { Log.i(TAG, "Erreur dans la requete : " + it.message) }) {
             override fun getParams(): Map<String, String> {
@@ -82,6 +80,7 @@ class SharedprefActivity : AppCompatActivity() {
             if (it.isSuccessful) {
                 Log.d(TAG, "SAVE: OK")
                 Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
+                return@addOnCompleteListener
             }
             val e = it.exception
             if (e is ResolvableApiException) {
@@ -119,6 +118,8 @@ class SharedprefActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "SAVE: OK")
                 Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LoggedActivity::class.java)
+                startActivity(intent)
             } else {
                 Log.e(TAG, "SAVE: Canceled by user")
             }
