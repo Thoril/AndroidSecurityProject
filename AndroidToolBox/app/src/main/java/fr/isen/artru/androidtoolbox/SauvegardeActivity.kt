@@ -20,26 +20,7 @@ class SauvegardeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sauvegarde)
 
-        val keyStore = KeyStore.getInstance("AndroidKeyStore")
-        keyStore.load(null)
-        val alias = "myKey"
 
-        if (!keyStore.containsAlias(alias)) {
-
-            val keyGenerator =KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore")
-            val keyGenParameterSpec = KeyGenParameterSpec.Builder(
-                alias,
-               KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-            )
-                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                .build()
-            keyGenerator.init(keyGenParameterSpec)
-            keyGenerator.generateKey()
-        }
-
-        val secretKeyEntry =  keyStore.getEntry(alias, null) as KeyStore.SecretKeyEntry
-        val secretKey = secretKeyEntry.secretKey
 
         val db = Room.databaseBuilder(
             applicationContext,
@@ -49,7 +30,7 @@ class SauvegardeActivity : AppCompatActivity() {
         insert.setOnClickListener{
             val cypherWrapper = CipherWrapper()
             val temp = resources.getIdentifier(firstName.text.toString(), lastName.text.toString(), this.packageName)
-            val user = User(firstName.text.toString(), lastName.text.toString(), cypherWrapper.encrypt(password.text.toString(),secretKey, true))
+            val user = User(firstName.text.toString(), lastName.text.toString(), password.text.toString())
             db.userDao().insertAll(user)
             Toast.makeText(this,"Informations Enregistrées", Toast.LENGTH_SHORT).show()
         }
