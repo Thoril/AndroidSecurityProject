@@ -38,7 +38,7 @@ class HttpClient(
 }
 
 private const val DOMAIN = "www.isen-mediterranee.fr"
-private const val PIN = "sha256/13db7a5f84f997bdb79dad36654f48a9753a46a710abc67303d12c13e41c2902"
+private const val PIN = "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 private fun createOkHttpClient(): OkHttpClient {
     return OkHttpClient.Builder().apply {
