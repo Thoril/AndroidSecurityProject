@@ -4,8 +4,8 @@
     <domain-config>
         <domain includeSubdomains="true">www.isen-mediterranee.fr</domain>
         <pin-set>
-            <pin digest="SHA-256">hFXPJO0krtKIdyQtElkuqRoAbJLup/jRKQs0DcVZ9Ac=</pin>
-            <!-- <pin digest="SHA-256">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</pin> -->
+            <!--<pin digest="SHA-256">hFXPJO0krtKIdyQtElkuqRoAbJLup/jRKQs0DcVZ9Ac=</pin>-->
+             <pin digest="SHA-256">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</pin>
         </pin-set>
     </domain-config>
 </network-security-config>

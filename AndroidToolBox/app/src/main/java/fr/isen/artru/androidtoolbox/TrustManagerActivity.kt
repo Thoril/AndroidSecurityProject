@@ -1,28 +1,19 @@
 package fr.isen.artru.androidtoolbox
 
-import android.content.Intent
-import android.net.Uri
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import okhttp3.OkHttpClient
-import java.io.*
 import java.lang.Exception
-import java.lang.System.load
 import java.net.URL
-import java.security.KeyStore
-import java.security.cert.CertificateFactory
-import java.security.cert.X509Certificate
 
 import javax.net.ssl.HttpsURLConnection
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLPeerUnverifiedException
-import javax.net.ssl.TrustManagerFactory
+
 
 class TrustManagerActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+  /*  override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trust_manager)
 
@@ -31,10 +22,21 @@ class TrustManagerActivity : AppCompatActivity() {
         val urlConnection = url.openConnection() as HttpsURLConnection
         urlConnection.sslSocketFactory = sslContext.socketFactory
 
-        //Toast.makeText(this, "Connection performed : " + sslContext.socketFactory, Toast.LENGTH_LONG).show()
+        val resu = RequestTask().execute()
+
+        if (resu.equals(true)){
+            Toast.makeText(this, "Ca marche", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Ca marche pas", Toast.LENGTH_LONG).show()
+        }
 
 
-       /* try {
+
+
+        //Toast.makeText(this, "request: $urlConnection \nResponse Code: ${urlConnection.responseCode} \nMessage: ${urlConnection.responseMessage}", Toast.LENGTH_LONG).show()
+
+
+         try {
             val cf: CertificateFactory = CertificateFactory.getInstance("X.509")
             //Load KeyStore with the Certificate file from resources as InputStream
             val caInput: InputStream = BufferedInputStream(FileInputStream("./main/res/raw/badssl_cert.cer"))
@@ -80,8 +82,31 @@ class TrustManagerActivity : AppCompatActivity() {
         catch(e:Exception){
             Toast.makeText(this, "Exception" + e.toString(), Toast.LENGTH_LONG).show()
             Log.e("Exception", e.toString())
-        }*/
+        }
 
     }
-
+    */
 }
+/*
+ class RequestTask : AsyncTask<URL, Void, Boolean>() {
+
+    private var exception: Exception? = null
+
+    override fun doInBackground(vararg urls: URL):Boolean {
+        return try {
+
+            val sslContext = SslUtils.getSslContextForCertificateFile(this, "badssl_cert.cer")
+            val url = URL("https://pinning-test.badssl.com/")
+            val urlConnection = url.openConnection() as HttpsURLConnection
+            urlConnection.sslSocketFactory = sslContext.socketFactory
+
+
+            true
+        } catch (e: Exception) {
+            this.exception = e
+
+            false
+        }
+    }
+}
+*/
