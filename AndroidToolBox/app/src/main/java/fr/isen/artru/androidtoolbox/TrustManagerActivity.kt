@@ -31,7 +31,7 @@ class TrustManagerActivity : AppCompatActivity() {
         val urlConnection = url.openConnection() as HttpsURLConnection
         urlConnection.sslSocketFactory = sslContext.socketFactory
 
-        Toast.makeText(this, "SSL SOCKET FACTORY" + sslContext.socketFactory.toString(), Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "Connection performed : " + sslContext.socketFactory, Toast.LENGTH_LONG).show()
 
 
        /* try {

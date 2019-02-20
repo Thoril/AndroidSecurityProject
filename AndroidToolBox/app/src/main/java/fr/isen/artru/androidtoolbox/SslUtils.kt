@@ -3,6 +3,7 @@ package fr.isen.artru.androidtoolbox
 import android.content.Context
 import android.content.res.AssetManager
 import android.util.Log
+import android.widget.Toast
 import java.security.KeyStore
 import java.security.cert.Certificate
 import java.security.cert.CertificateFactory
@@ -19,6 +20,8 @@ object SslUtils {
             val sslContext = SSLContext.getInstance("SSL")
             val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
             trustManagerFactory.init(keyStore)
+
+            Log.d("TrustManager : ", trustManagerFactory.toString())
             sslContext.init(null, trustManagerFactory.getTrustManagers(),null)
             return sslContext
         } catch (e: Exception) {
@@ -38,7 +41,7 @@ object SslUtils {
             val ca: Certificate
             try {
                 ca = cf.generateCertificate(caInput)
-                Log.d("SslUtilsAndroid", "ca=" + (ca as X509Certificate).getSubjectDN())
+                Log.d("SslUtilsAndroid", "ca : " + (ca as X509Certificate).getSubjectDN() +"\nCert type : " +ca.type +"\n Cert hash code : "+ca.hashCode()+"\n Cert Public Key Algorithm : " +ca.publicKey.algorithm + "\n Cert public key format : " + ca.publicKey.format)
             } finally {
                 caInput.close()
             }
