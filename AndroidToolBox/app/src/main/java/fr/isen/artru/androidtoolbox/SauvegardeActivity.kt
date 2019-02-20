@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.support.annotation.RequiresApi
+import android.widget.Toast
 import fr.isen.artru.androidtoolbox.model.database.AppDatabase
 import fr.isen.artru.androidtoolbox.model.database.User
 import kotlinx.android.synthetic.main.activity_sauvegarde.*
@@ -18,7 +19,6 @@ import javax.crypto.KeyGenerator
 
 class SauvegardeActivity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sauvegarde)
@@ -54,6 +54,7 @@ class SauvegardeActivity : AppCompatActivity() {
             val temp = resources.getIdentifier(firstName.text.toString(), lastName.text.toString(), this.packageName)
             val user = User(firstName.text.toString(), lastName.text.toString(), cypherWrapper.encrypt(password.text.toString(),secretKey, true))
             db.userDao().insertAll(user)
+            Toast.makeText(this,"Informations Enregistrées", Toast.LENGTH_SHORT).show()
         }
 
         display.setOnClickListener {
