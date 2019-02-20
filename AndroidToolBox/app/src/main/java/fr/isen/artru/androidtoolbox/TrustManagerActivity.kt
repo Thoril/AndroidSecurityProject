@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import java.io.IOException
+import okhttp3.OkHttpClient
+import java.io.*
 import java.lang.Exception
 import java.lang.System.load
 import java.net.URL
@@ -25,18 +26,25 @@ class TrustManagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trust_manager)
 
-        try {
+        val sslContext = SslUtils.getSslContextForCertificateFile(this, "badssl_cert.cer")
+        val url = URL("https://pinning-test.badssl.com/")
+        val urlConnection = url.openConnection() as HttpsURLConnection
+        urlConnection.sslSocketFactory = sslContext.socketFactory
+
+        //Toast.makeText(this, "Connection performed : " + sslContext.socketFactory, Toast.LENGTH_LONG).show()
+
+
+       /* try {
             val cf: CertificateFactory = CertificateFactory.getInstance("X.509")
             //Load KeyStore with the Certificate file from resources as InputStream
-            val resourceStream = resources.openRawResource(R.raw.isen_cert)
-            val ca: X509Certificate = resourceStream.use {
+            val caInput: InputStream = BufferedInputStream(FileInputStream("./main/res/raw/badssl_cert.cer"))
+            val ca: X509Certificate = caInput.use {
                 cf.generateCertificate(it) as X509Certificate
             }
 
             System.out.println("ca=" + ca.subjectDN)
 
             val keyStoreType = KeyStore.getDefaultType()
-
             val keyStore = KeyStore.getInstance(keyStoreType).apply {
                 load(null, null)
                 setCertificateEntry("ca", ca)
@@ -56,10 +64,12 @@ class TrustManagerActivity : AppCompatActivity() {
 
             var sslContext = SSLContext.getInstance("TLS")
             sslContext.init(null, trustManagerFactory.trustManagers, null)
-            val url = URL("https://www.isen-mediterranee.fr/")
+            val url = URL("https://pinning-test.badssl.com/")
             val urlConnection = url.openConnection() as HttpsURLConnection
             urlConnection.sslSocketFactory = sslContext.socketFactory
 
+            /*val inputStream: InputStream = urlConnection.inputStream
+            copyInputStreamToOutputStream(inputStream, System.out)*/
 
             Toast.makeText(this, sslContext.socketFactory.toString(), Toast.LENGTH_LONG).show()
 
@@ -69,7 +79,8 @@ class TrustManagerActivity : AppCompatActivity() {
         }
         catch(e:Exception){
             Toast.makeText(this, "Exception" + e.toString(), Toast.LENGTH_LONG).show()
-        }
+            Log.e("Exception", e.toString())
+        }*/
 
     }
 

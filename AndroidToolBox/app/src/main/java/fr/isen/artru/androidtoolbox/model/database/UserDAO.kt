@@ -22,4 +22,7 @@ interface UserDao {
 
     @Delete
     fun delete(user: User)
+
+    @Query("DELETE FROM user WHERE 1=1")
+    fun deleteAll()
 }
