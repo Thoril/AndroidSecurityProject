@@ -2,18 +2,15 @@ package fr.isen.artru.androidtoolbox
 
 import android.arch.persistence.room.Room
 import android.content.Intent
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import android.support.annotation.RequiresApi
 import android.widget.Toast
 import fr.isen.artru.androidtoolbox.model.database.AppDatabase
 import fr.isen.artru.androidtoolbox.model.database.User
 import kotlinx.android.synthetic.main.activity_sauvegarde.*
 import java.security.KeyStore
-import java.util.*
 import javax.crypto.KeyGenerator
 
 
@@ -59,6 +56,11 @@ class SauvegardeActivity : AppCompatActivity() {
 
         display.setOnClickListener {
             startActivity(Intent(this, UserActivity::class.java))
+        }
+
+        deleteAll.setOnClickListener {
+            db.userDao().deleteAll()
+            Toast.makeText(this,"Informations Supprimées", Toast.LENGTH_SHORT).show()
         }
     }
 }
