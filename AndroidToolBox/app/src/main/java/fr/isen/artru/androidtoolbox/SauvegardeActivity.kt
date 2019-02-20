@@ -60,6 +60,11 @@ class SauvegardeActivity : AppCompatActivity() {
         display.setOnClickListener {
             startActivity(Intent(this, UserActivity::class.java))
         }
+
+        deleteAll.setOnClickListener {
+            db.userDao().deleteAll()
+            Toast.makeText(this,"Informations Supprimées", Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
