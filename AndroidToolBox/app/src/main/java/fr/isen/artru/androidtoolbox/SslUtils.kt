@@ -49,7 +49,7 @@ object SslUtils {
             val keyStoreType = KeyStore.getDefaultType()
             keyStore = KeyStore.getInstance(keyStoreType)
             keyStore!!.load(null, null)
-            keyStore!!.setCertificateEntry("ca", ca)
+            keyStore.setCertificateEntry("ca", ca)
         } catch (e: Exception) {
             Log.e("SslUtilsAndroid", "Error during getting keystore", e)
         }

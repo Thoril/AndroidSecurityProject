@@ -13,7 +13,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         imageCycleDeVie.setOnClickListener{
-            startActivity(Intent(this, CycleDeVieActivity::class.java))
+            startActivity(Intent(this,SharedprefActivity::class.java))
         }
         deconnexion.setOnClickListener{
             val sharedPref = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
@@ -29,15 +29,11 @@ class HomeActivity : AppCompatActivity() {
         }
 
         imagePermissions.setOnClickListener{
-            startActivity(Intent(this, PermissionActivity::class.java))
+            startActivity(Intent(this, CertificatActivity::class.java))
         }
 
         imageService.setOnClickListener{
             startActivity(Intent(this,CaPinningActivity::class.java))
-        }
-
-        imagePagination.setOnClickListener{
-            startActivity(Intent(this,PaginationActivity::class.java))
         }
     }
 

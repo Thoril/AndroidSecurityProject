@@ -72,12 +72,13 @@
             app:layout_constraintTop_toBottomOf="@+id/imageSauvegarde" app:layout_constraintStart_toStartOf="@+id/imageSauvegarde"
             app:layout_constraintEnd_toEndOf="@+id/imageSauvegarde"/>
     <TextView
-            android:text="@string/permissions"
+            android:text="Certificat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView6"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imagePermissions" app:layout_constraintEnd_toEndOf="@+id/imagePermissions"
+            app:layout_constraintTop_toBottomOf="@+id/imagePermissions"
+            app:layout_constraintEnd_toEndOf="@+id/imagePermissions"
             app:layout_constraintStart_toStartOf="@+id/imagePermissions"/>
     <TextView
             android:text="Certificate Pinning"
@@ -95,20 +96,4 @@
             android:id="@+id/deconnexion" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="6dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="6dp" android:textSize="10sp"
             android:textColor="@android:color/white"/>
-    <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp" app:srcCompat="@android:drawable/ic_media_ff"
-            android:id="@+id/imagePagination"
-            android:padding="15dp" android:background="@android:color/holo_red_dark"
-            android:layout_marginTop="44dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/textView6" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView7"/>
-    <TextView
-            android:text="@string/pagination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/imagePagination"
-            app:layout_constraintEnd_toEndOf="@+id/imagePagination" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imagePagination"/>
 </android.support.constraint.ConstraintLayout>

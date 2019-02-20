@@ -1,31 +1,61 @@
 package fr.isen.artru.androidtoolbox
 
-
+import android.os.Build
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
+import android.support.annotation.RequiresApi
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
-import fr.isen.artru.androidtoolbox.model.Results
+import android.widget.Button
+import fr.isen.artru.androidtoolbox.model.database.User
+import java.security.KeyStore
+import javax.crypto.KeyGenerator
 
 
-class UserAdapter(private val UserList: List<Results>?) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
+class UserAdapter(private val UserList: List<User>) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
+    @RequiresApi(Build.VERSION_CODES.M)
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var name: TextView
-        var adress: TextView
-        var email: TextView
-        var logo: ImageView
+        var firstName: TextView
+        var lastName: TextView
+        var password: TextView
+        var uncrypt: Button
 
         init {
-            name = view.findViewById(R.id.name)
-            adress = view.findViewById(R.id.adress)
-            email = view.findViewById(R.id.mail)
-            logo =view.findViewById(R.id.logo)
+            firstName = view.findViewById(R.id.firstName)
+            lastName = view.findViewById(R.id.lastName)
+            password = view.findViewById(R.id.password)
+            uncrypt = view.findViewById(R.id.uncrypt)
+            uncrypt.setOnClickListener {
+                val keyStore = KeyStore.getInstance("AndroidKeyStore")
+                keyStore.load(null)
+                val alias = "myKey"
+
+                if (!keyStore.containsAlias(alias)) {
+
+                    val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore")
+                    val keyGenParameterSpec = KeyGenParameterSpec.Builder(
+                        alias,
+                        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+                    )
+                        .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                        .build()
+                    keyGenerator.init(keyGenParameterSpec)
+                    keyGenerator.generateKey()
+                }
+
+                val secretKeyEntry =  keyStore.getEntry(alias, null) as KeyStore.SecretKeyEntry
+                val secretKey = secretKeyEntry.secretKey
+                val cypherWrapper = CipherWrapper()
+                password.text= cypherWrapper.decrypt(password.text.toString(),secretKey,true)
+            }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -35,16 +65,13 @@ class UserAdapter(private val UserList: List<Results>?) : RecyclerView.Adapter<U
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val user = UserList?.get(position)
-        holder.name.text = user?.name?.first?.substring(0, 1)?.toUpperCase() + user?.name?.first?.substring(1) + " " +
-                user?.name?.last?.toUpperCase()
-        holder.adress.text = user?.location?.adress
-        holder.email.text = user?.email
-        Picasso.get().load(user?.picture?.medium).transform(CircleTransform()).into(holder.logo)
-
+        val user = UserList[position]
+        holder.firstName.text = user.firstName
+        holder.lastName.text = user.lastName
+        holder.password.text = user.password
     }
 
     override fun getItemCount(): Int {
-        return UserList?.size ?: 0
+        return UserList.size
     }
 }
